@@ -1,17 +1,16 @@
-// Import moment during testing on node
-var moment = require('moment')
-
 (() => {
-    //Global settings
-    const 
-          dt = moment().format('L'),
-          rgx = /^\d+/,
-          rgxTask = /^\s*-\s*\[[\s]\]\s/,
-          rgxTaskDone = /^\s*-\s*\[[x\-\*\+]\]/,
-          optOddEven = false,
-          optAsc = false,
-          optTask = true,
-          optShowInvisible = true;
+    // Import moment during testing on node
+    var moment = require('moment')
+    // GLOBAL SETTINGS
+    const
+        dt = moment().format('L'),
+        rgx = /^\d+/,
+        rgxTask = /^\s*-\s*\[[\s]\]\s/,
+        rgxTaskDone = /^\s*-\s*\[[x\-\*\+]\]/,
+        optOddEven = false,
+        optAsc = false,
+        optTask = true,
+        optShowInvisible = true;
 
     const main = () => {
         const data = `# Not at Homes
@@ -53,11 +52,11 @@ var moment = require('moment')
             }
             newTxt += va.join('\n') + '\n\n'
         }
-        return optShowInvisible ? 
-                 invisibles(newTxt) :
-                 newTxt;
+        return optShowInvisible ?
+            invisibles(newTxt) :
+            newTxt;
     }
-    //GENERIC FUNCTIONS    
+    // GENERIC FUNCTIONS    
     const sortHouses = (a, b) => {
         let aNum = 0,
             bNum = 0;
@@ -80,19 +79,19 @@ var moment = require('moment')
     };
 
     const Taskify = s => '- [ ] ' + s;
-  
+
     const Detaskify = s => s.replace('- [ ] ', '');
-  
+
     const invisibles = strText => {
-     return (strText.length > 0 ? (
+        return (strText.length > 0 ? (
             JSON.stringify(strText) // Visible escapes,
-            .slice(1, -1)           // without flanking quotes,
-            .replace(/ /g, '.')     // using . to show spaces,
-            .split('\\n')           // and breaking the string
+                .slice(1, -1)           // without flanking quotes,
+                .replace(/ /g, '.')     // using . to show spaces,
+                .split('\\n')           // and breaking the string
         ) : []).join('\\n\n')        // into lines with visible \n
     }
-    
-    //MAIN
+
+    // MAIN
     let output = main();
     console.log(output);
 })();
