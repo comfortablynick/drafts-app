@@ -10,7 +10,7 @@
         optOddEven = false,
         optAsc = false,
         optTask = true,
-        optShowInvisible = true;
+        optShowInvisible = false;
 
     const main = () => {
         const data = `# Not at Homes
