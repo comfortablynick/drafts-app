@@ -44,10 +44,10 @@
     if (words) {
       // Create prompt
       const p = Object.assign(Prompt.create(), {
-          title: "Location",
-          message: "Share Location",
-          isCancellable: true
-        }),
+        title: "Location",
+        message: "Share Location",
+        isCancellable: true
+      }),
         // Build 2d array of buttons/actions
         buttons = [
           ['Copy to Clipboard', () => app.setClipboard(words)],
@@ -77,9 +77,9 @@
   // createDraftCopyWithLoc :: w3w link -> Copy with loc link and msg
   const createDraftCopyWithLoc = locLink => {
     const createTime = draft.createdAt.toString("F"),
-    origText = draft.content,
-    newText = `As discussed, here are the notes I made:\n\n${origText}\n\n${createTime}\n\n${locLink}`,
-    d = Draft.create();
+      origText = draft.content,
+      newText = `As discussed, here are the notes I made:\n\n${origText}\n\n${createTime}\n\n${locLink}`,
+      d = Draft.create();
     d.content = newText;
     d.update();
     editor.load(d);
